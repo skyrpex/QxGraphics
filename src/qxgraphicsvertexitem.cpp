@@ -10,6 +10,7 @@ QxGraphicsVertexItem::QxGraphicsVertexItem() :
   this->setFlags(ItemIsMovable |
                  ItemIgnoresTransformations |
                  ItemSendsScenePositionChanges);
+  this->setCacheMode(DeviceCoordinateCache);
   this->setBrush(Qt::lightGray);
 }
 
@@ -19,6 +20,7 @@ QxGraphicsVertexItem::QxGraphicsVertexItem(const QPointF &pos) :
   this->setFlags(ItemIsMovable |
                  ItemIgnoresTransformations |
                  ItemSendsScenePositionChanges);
+  this->setCacheMode(DeviceCoordinateCache);
   this->setBrush(Qt::lightGray);
   this->setPos(pos);
 }
