@@ -17,7 +17,7 @@ public:
 
   void setPolygon(const QPolygonF &polygon);
 
-
+  bool splitEdge(QxGraphicsEdgeItem *edge, const QPointF &pos);
 
   QPolygonF polygon() const;
   bool isClosed() const;
@@ -27,14 +27,14 @@ public:
   bool removeVertex(QxGraphicsVertexItem *vertex);
   void close();
 
-  void updateBoundaryEdges();
+//  void updateBoundaryEdges();
 
 public slots:
   void setBoundaryVerticesVisible(bool visible);
 
 private:
   void clear();
-  void clearBoundaryEdges();
+  void clearEdges();
 
   QxGraphicsEdgeItem *createEdge(QxGraphicsVertexItem *v1, QxGraphicsVertexItem *v2);
   QxGraphicsEdgeItem *findEdge1(QxGraphicsVertexItem *v);

@@ -25,7 +25,34 @@ void QxGraphicsPolygonItem::setPolygon(const QPolygonF &polygon)
     this->addVertex(new QxGraphicsVertexItem(point));
 }
 
-void QxGraphicsPolygonItem::clearBoundaryEdges()
+bool QxGraphicsPolygonItem::splitEdge(QxGraphicsEdgeItem *edge, const QPointF &pos)
+{
+  if(!m_edges.contains(edge)) return false;
+
+  QxGraphicsVertexItem *v1 = edge->v1();
+  QxGraphicsVertexItem *v2 = edge->v2();
+
+  QxGraphicsVertexItem *v = new QxGraphicsVertexItem;
+  v->setVisible(m_boundaryVisible);
+  v->setPos(pos);
+  this->addToGroup(v);
+  int i = m_boundary.indexOf(v2);
+  m_boundary.insert(i, v);
+
+  // Delete old edge
+  m_edges.removeAll(edge);
+  delete edge;
+
+  // Connect v1 to v
+  this->createEdge(v1, v);
+
+  // Connect v to v2
+  this->createEdge(v, v2);
+
+  return true;
+}
+
+void QxGraphicsPolygonItem::clearEdges()
 {
   qDeleteAll(m_edges);
   m_edges.clear();
@@ -33,7 +60,7 @@ void QxGraphicsPolygonItem::clearBoundaryEdges()
 
 void QxGraphicsPolygonItem::clear()
 {
-  this->clearBoundaryEdges();
+  this->clearEdges();
   qDeleteAll(m_boundary);
   m_boundary.clear();
   m_closed = false;
@@ -111,25 +138,26 @@ void QxGraphicsPolygonItem::close()
   this->createEdge(m_boundary.last(), m_boundary.first());
 }
 
-void QxGraphicsPolygonItem::updateBoundaryEdges()
-{
-  this->clearBoundaryEdges();
 
-  QxGraphicsVertexItem *v1 = NULL;
-  foreach(QxGraphicsVertexItem *v2, m_boundary)
-  {
-    if(v1 != NULL)
-    {
-      this->createEdge(v1, v2);
-    }
-    v1 = v2;
-  }
+//void QxGraphicsPolygonItem::updateBoundaryEdges()
+//{
+//  this->clearBoundaryEdges();
 
-  if(m_boundary.count() >= 2)
-  {
-    this->createEdge(m_boundary.last(), m_boundary.first());
-  }
-}
+//  QxGraphicsVertexItem *v1 = NULL;
+//  foreach(QxGraphicsVertexItem *v2, m_boundary)
+//  {
+//    if(v1 != NULL)
+//    {
+//      this->createEdge(v1, v2);
+//    }
+//    v1 = v2;
+//  }
+
+//  if(m_boundary.count() >= 2)
+//  {
+//    this->createEdge(m_boundary.last(), m_boundary.first());
+//  }
+//}
 
 void QxGraphicsPolygonItem::setBoundaryVerticesVisible(bool visible)
 {
