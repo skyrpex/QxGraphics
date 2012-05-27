@@ -2,28 +2,22 @@
 #define GRAPHICSLINEITEM_H
 
 #include "qxgraphics_global.h"
-#include <QGraphicsItem>
-#include <QLineF>
+#include <QGraphicsLineItem>
 
-class QXGRAPHICS_API QxGraphicsLineItem : public QGraphicsItem
+class QXGRAPHICS_API QxGraphicsLineItem : public QGraphicsLineItem
 {
 public:
-  QxGraphicsLineItem();
-  QxGraphicsLineItem(const QLineF &line);
-
-  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+  QxGraphicsLineItem(QGraphicsItem *parent = 0);
+  QxGraphicsLineItem(const QLineF &line, QGraphicsItem *parent = 0);
+  QxGraphicsLineItem(qreal x1, qreal y1,
+                     qreal x2, qreal y2,
+                     QGraphicsItem *parent = 0);
 
   QRectF  boundingRect() const;
   bool    collidesWithPath(const QPainterPath &path, Qt::ItemSelectionMode mode) const;
   bool    contains(const QPointF &point) const;
   QPointF nearestPoint(const QPointF &point) const;
   qreal   distanceTo(const QPointF &point) const;
-  QLineF  line() const;
-
-  void setLine(const QLineF &line);
-
-private:
-  QLineF m_line;
 };
 
 #endif // GRAPHICSLINEITEM_H

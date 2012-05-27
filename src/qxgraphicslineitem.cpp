@@ -10,33 +10,30 @@
 static const qreal MinSplitDistance = 4.0;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-QxGraphicsLineItem::QxGraphicsLineItem()
+QxGraphicsLineItem::QxGraphicsLineItem(QGraphicsItem *parent) :
+  QGraphicsLineItem(parent)
 {
-//  this->setCursor(Qt::CrossCursor);
-  this->setZValue(-1);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-QxGraphicsLineItem::QxGraphicsLineItem(const QLineF &line)
+QxGraphicsLineItem::QxGraphicsLineItem(const QLineF &line,
+                                       QGraphicsItem *parent) :
+  QGraphicsLineItem(line, parent)
 {
-  this->setZValue(-1);
-  this->setLine(line);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void QxGraphicsLineItem::paint(QPainter *painter,
-                             const QStyleOptionGraphicsItem *option,
-                             QWidget *widget)
+QxGraphicsLineItem::QxGraphicsLineItem(qreal x1, qreal y1,
+                                       qreal x2, qreal y2,
+                                       QGraphicsItem *parent) :
+  QGraphicsLineItem(x1, y1, x2, y2, parent)
 {
-  if(qFuzzyCompare(m_line.length(), qreal(0.0)))
-     return;
-  painter->drawLine(m_line);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 QRectF QxGraphicsLineItem::boundingRect() const
 {
-  return QRectF(m_line.p1(), m_line.p2())
+  return QRectF(this->line().p1(), this->line().p2())
       .normalized()
       .adjusted(-MinSplitDistance, -MinSplitDistance,
                 MinSplitDistance, MinSplitDistance);
@@ -59,40 +56,27 @@ bool QxGraphicsLineItem::contains(const QPointF &point) const
 // http://local.wasp.uwa.edu.au/~pbourke/geometry/pointline/
 QPointF QxGraphicsLineItem::nearestPoint(const QPointF &point) const
 {
-  if(m_line.isNull()) return m_line.p1();
+  if(this->line().isNull()) return this->line().p1();
 
-  qreal x1 = m_line.p1().x();
-  qreal x2 = m_line.p2().x();
+  qreal x1 = this->line().p1().x();
+  qreal x2 = this->line().p2().x();
   qreal x3 = point.x();
-  qreal y1 = m_line.p1().y();
-  qreal y2 = m_line.p2().y();
+  qreal y1 = this->line().p1().y();
+  qreal y2 = this->line().p2().y();
   qreal y3 = point.y();
 
   qreal x31 = x3 - x1;
   qreal x21 = x2 - x1;
   qreal y31 = y3 - y1;
   qreal y21 = y2 - y1;
-  qreal len = m_line.length();
+  qreal len = this->line().length();
   qreal u = (x31*x21 + y31*y21) / (len*len);
 
-  return m_line.pointAt(qMax(qMin(u, 1.0), 0.0));
+  return this->line().pointAt(qMax(qMin(u, 1.0), 0.0));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 qreal QxGraphicsLineItem::distanceTo(const QPointF &point) const
 {
   return QLineF(point, this->nearestPoint(point)).length();
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-QLineF QxGraphicsLineItem::line() const
-{
-  return m_line;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void QxGraphicsLineItem::setLine(const QLineF &line)
-{
-  this->prepareGeometryChange();
-  m_line = line;
 }
