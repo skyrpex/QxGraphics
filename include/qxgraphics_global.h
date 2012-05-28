@@ -4,9 +4,9 @@
 #include <QtGlobal>
 
 #if defined(QXGRAPHICS_LIBRARY)
-#  define QXGRAPHICS_API /*Q_DECL_EXPORT*/
+#  define QXGRAPHICS_API Q_DECL_EXPORT
 #else
-#  define QXGRAPHICS_API /*Q_DECL_IMPORT*/
+#  define QXGRAPHICS_API Q_DECL_IMPORT
 #endif
 
 

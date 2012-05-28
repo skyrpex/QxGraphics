@@ -1,10 +1,11 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
+#include "qxgraphics_global.h"
 #include <QObject>
 #include <QGraphicsRectItem>
 
-class QxGraphicsVertexItem : public QObject, public QGraphicsRectItem
+class QXGRAPHICS_API QxGraphicsVertexItem : public QObject, public QGraphicsRectItem
 {
   Q_OBJECT
   Q_INTERFACES(QGraphicsItem)

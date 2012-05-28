@@ -1,6 +1,7 @@
 #ifndef GRAPHICSVIEW_H
 #define GRAPHICSVIEW_H
 
+#include "qxgraphics_global.h"
 #include <QGraphicsView>
 #include "qxgraphics_global.h"
 

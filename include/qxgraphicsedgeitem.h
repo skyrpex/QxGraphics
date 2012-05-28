@@ -1,11 +1,12 @@
 #ifndef EDGE_H
 #define EDGE_H
 
+#include "qxgraphics_global.h"
 #include <QObject>
 #include <qxgraphicslineitem.h>
 #include <qxgraphicsvertexitem.h>
 
-class QxGraphicsEdgeItem : public QObject, public QxGraphicsLineItem
+class QXGRAPHICS_API QxGraphicsEdgeItem : public QObject, public QxGraphicsLineItem
 {
   Q_OBJECT
   Q_INTERFACES(QGraphicsItem)
