@@ -1,4 +1,4 @@
-#include <qxgraphicslineitem.h>
+#include "qxgraphicslineitem.h"
 #include <QBrush>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QPainter>

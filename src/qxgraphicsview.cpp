@@ -1,4 +1,4 @@
-#include <qxgraphicsview.h>
+#include "qxgraphicsview.h"
 #include <QMouseEvent>
 #include <QDebug>
 #include <QApplication>

@@ -1,14 +1,13 @@
-#ifndef POLYGON_H
-#define POLYGON_H
+#ifndef QXGRAPHICSPOLYGONITEM_H
+#define QXGRAPHICSPOLYGONITEM_H
 
-#include "qxgraphics_global.h"
 #include <QGraphicsItemGroup>
 #include <QPolygonF>
 #include <QObject>
-#include <qxgraphicsvertexitem.h>
-#include <qxgraphicsedgeitem.h>
+#include "qxgraphicsvertexitem.h"
+#include "qxgraphicsedgeitem.h"
 
-class QXGRAPHICS_API QxGraphicsPolygonItem : public QObject, public QGraphicsItemGroup
+class QxGraphicsPolygonItem : public QObject, public QGraphicsItemGroup
 {
   Q_OBJECT
   Q_INTERFACES(QGraphicsItem)
@@ -47,4 +46,4 @@ private:
   bool m_boundaryVisible;
 };
 
-#endif // POLYGON_H
+#endif // QXGRAPHICSPOLYGONITEM_H

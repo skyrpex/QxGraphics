@@ -1,11 +1,10 @@
-#ifndef VERTEX_H
-#define VERTEX_H
+#ifndef QXGRAPHICSVERTEXITEM_H
+#define QXGRAPHICSVERTEXITEM_H
 
-#include "qxgraphics_global.h"
 #include <QObject>
 #include <QGraphicsRectItem>
 
-class QXGRAPHICS_API QxGraphicsVertexItem : public QObject, public QGraphicsRectItem
+class QxGraphicsVertexItem : public QObject, public QGraphicsRectItem
 {
   Q_OBJECT
   Q_INTERFACES(QGraphicsItem)
@@ -19,4 +18,4 @@ signals:
   void posChanged();
 };
 
-#endif // VERTEX_H
+#endif // QXGRAPHICSVERTEXITEM_H

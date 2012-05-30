@@ -1,10 +1,9 @@
-#ifndef GRAPHICSLINEITEM_H
-#define GRAPHICSLINEITEM_H
+#ifndef QXGRAPHICSLINEITEM_H
+#define QXGRAPHICSLINEITEM_H
 
-#include "qxgraphics_global.h"
 #include <QGraphicsLineItem>
 
-class QXGRAPHICS_API QxGraphicsLineItem : public QGraphicsLineItem
+class QxGraphicsLineItem : public QGraphicsLineItem
 {
 public:
   QxGraphicsLineItem(QGraphicsItem *parent = 0);
@@ -20,4 +19,4 @@ public:
   qreal   distanceTo(const QPointF &point) const;
 };
 
-#endif // GRAPHICSLINEITEM_H
+#endif // QXGRAPHICSLINEITEM_H

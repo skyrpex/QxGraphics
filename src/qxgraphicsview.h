@@ -1,9 +1,7 @@
-#ifndef GRAPHICSVIEW_H
-#define GRAPHICSVIEW_H
+#ifndef QXGRAPHICSVIEW_H
+#define QXGRAPHICSVIEW_H
 
-#include "qxgraphics_global.h"
 #include <QGraphicsView>
-#include "qxgraphics_global.h"
 
 /**
   * @class GraphicsEnhancedView
@@ -11,7 +9,7 @@
   *
   * It is able to do nice things
   */
-class QXGRAPHICS_API QxGraphicsView : public QGraphicsView
+class QxGraphicsView : public QGraphicsView
 {
   Q_OBJECT
 public:
@@ -146,4 +144,4 @@ private:
   qreal m_scale;                  ///< Holds the view scale
 };
 
-#endif // ENHANCEDGRAPHICSVIEW_H
+#endif // QXGRAPHICSVIEW_H

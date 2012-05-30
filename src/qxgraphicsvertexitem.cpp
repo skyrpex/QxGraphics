@@ -1,4 +1,4 @@
-#include <qxgraphicsvertexitem.h>
+#include "qxgraphicsvertexitem.h"
 #include <QBrush>
 #include <QDebug>
 

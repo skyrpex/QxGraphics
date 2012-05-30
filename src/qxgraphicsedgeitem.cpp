@@ -1,4 +1,4 @@
-#include <qxgraphicsedgeitem.h>
+#include "qxgraphicsedgeitem.h"
 
 QxGraphicsEdgeItem::QxGraphicsEdgeItem(QxGraphicsVertexItem *v1, QxGraphicsVertexItem *v2) :
   m_v1(v1),

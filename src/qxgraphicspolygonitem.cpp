@@ -1,6 +1,6 @@
-#include <qxgraphicspolygonitem.h>
-#include <qxgraphicsvertexitem.h>
-#include <qxgraphicsedgeitem.h>
+#include "qxgraphicspolygonitem.h"
+#include "qxgraphicsvertexitem.h"
+#include "qxgraphicsedgeitem.h"
 #include <QDebug>
 
 QxGraphicsPolygonItem::QxGraphicsPolygonItem() :
