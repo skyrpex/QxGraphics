@@ -1,8 +1,9 @@
 #include "qxgraphicsvertexitem.h"
 #include <QBrush>
+#include <QPen>
 #include <QDebug>
 
-static const qreal VertexWidth = 7.5;
+static const qreal VertexWidth = 5;
 
 QxGraphicsVertexItem::QxGraphicsVertexItem() :
   QGraphicsRectItem(-VertexWidth/2, -VertexWidth/2, VertexWidth, VertexWidth)
@@ -11,7 +12,8 @@ QxGraphicsVertexItem::QxGraphicsVertexItem() :
                  ItemIgnoresTransformations |
                  ItemSendsScenePositionChanges);
   this->setCacheMode(DeviceCoordinateCache);
-  this->setBrush(Qt::lightGray);
+  this->setPen(Qt::NoPen);
+  this->setBrush(Qt::black);
 }
 
 QxGraphicsVertexItem::QxGraphicsVertexItem(const QPointF &pos) :
@@ -21,7 +23,8 @@ QxGraphicsVertexItem::QxGraphicsVertexItem(const QPointF &pos) :
                  ItemIgnoresTransformations |
                  ItemSendsScenePositionChanges);
   this->setCacheMode(DeviceCoordinateCache);
-  this->setBrush(Qt::lightGray);
+  this->setPen(Qt::NoPen);
+  this->setBrush(Qt::black);
   this->setPos(pos);
 }
 
