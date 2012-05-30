@@ -17,5 +17,6 @@ HEADERS  += \
     $$PWD/src/qxgraphicslineitem.h \
     $$PWD/src/qxgraphicspolygonitem.h \
     $$PWD/src/qxgraphicsvertexitem.h \
-    $$PWD/src/qxgraphicsedgeitem.h
+    $$PWD/src/qxgraphicsedgeitem.h \
+    $$PWD/src/qxgraphicsviewcontroller.h
 

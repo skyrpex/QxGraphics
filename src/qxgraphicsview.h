@@ -2,6 +2,7 @@
 #define QXGRAPHICSVIEW_H
 
 #include <QGraphicsView>
+#include <QxGraphicsViewController>
 
 /**
   * @class GraphicsEnhancedView
@@ -25,6 +26,20 @@ public:
     * @param parent QWidget
     */
   explicit QxGraphicsView(QGraphicsScene *scene, QWidget *parent = 0);
+
+  /**
+    * @brief Constructor that takes a QGraphicsScene
+    * @param scene  QGraphicsScene
+    * @param parent QWidget
+    */
+  void installController(QxGraphicsViewController *controller);
+
+  /**
+    * @brief Constructor that takes a QGraphicsScene
+    * @param scene  QGraphicsScene
+    * @param parent QWidget
+    */
+  void uninstallController();
 
   /**
     * @brief Sets the current scene rect to fit the items bounding box and applies a margin
@@ -100,9 +115,29 @@ signals:
 
 protected:
   /**
+    * @brief Reimplemented from QGraphicsView::contextMenuEvent()
+    */
+  virtual void contextMenuEvent(QContextMenuEvent *event);
+
+  /**
+    * @brief Reimplemented from QGraphicsView::mouseDoubleClickEvent()
+    */
+  virtual void mouseDoubleClickEvent(QMouseEvent *event);
+
+  /**
     * @brief Reimplemented from QGraphicsView::mousePressEvent()
     */
   virtual void mousePressEvent(QMouseEvent *event);
+
+  /**
+    * @brief Reimplemented from QGraphicsView::mouseMoveEvent()
+    */
+  virtual void mouseMoveEvent(QMouseEvent *event);
+
+  /**
+    * @brief Reimplemented from QGraphicsView::mouseReleaseEvent()
+    */
+  virtual void mouseReleaseEvent(QMouseEvent *event);
 
   /**
     * @brief Reimplemented from QGraphicsView::wheelEvent()
@@ -122,7 +157,12 @@ protected:
   /**
     * @brief Reimplemented from QGraphicsView::drawBackground()
     */
-  void drawBackground(QPainter *painter, const QRectF &rect);
+  virtual void drawBackground(QPainter *painter, const QRectF &rect);
+
+  /**
+    * @brief Reimplemented from QGraphicsView::drawForeground()
+    */
+  virtual void drawForeground(QPainter *painter, const QRectF &rect);
 
 private:
   /**
@@ -142,6 +182,8 @@ private:
   QBrush m_sceneBrush;            ///< Holds the scene brush
 
   qreal m_scale;                  ///< Holds the view scale
+
+  QxGraphicsViewController *m_controller; ///< Current installed controller
 };
 
 #endif // QXGRAPHICSVIEW_H
