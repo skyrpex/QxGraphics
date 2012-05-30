@@ -23,6 +23,7 @@ void QxGraphicsPolygonItem::setPolygon(const QPolygonF &polygon)
   this->clear();
   foreach(const QPointF &point, polygon)
     this->addVertex(new QxGraphicsVertexItem(point));
+  this->close();
 }
 
 bool QxGraphicsPolygonItem::splitEdge(QxGraphicsEdgeItem *edge, const QPointF &pos)
