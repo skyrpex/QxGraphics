@@ -1,1 +1,1 @@
-#include "../src/qxgraphicsview.h"
+#include "qxgraphicsview.h"

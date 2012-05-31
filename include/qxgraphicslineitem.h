@@ -1,9 +1,10 @@
 #ifndef QXGRAPHICSLINEITEM_H
 #define QXGRAPHICSLINEITEM_H
 
+#include <qxgraphics_global.h>
 #include <QGraphicsLineItem>
 
-class QxGraphicsLineItem : public QGraphicsLineItem
+class QXGRAPHICS_EXPORT QxGraphicsLineItem : public QGraphicsLineItem
 {
 public:
   QxGraphicsLineItem(QGraphicsItem *parent = 0);

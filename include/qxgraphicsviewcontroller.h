@@ -1,6 +1,7 @@
 #ifndef QXGRAPHICSVIEWCONTROLLER_H
 #define QXGRAPHICSVIEWCONTROLLER_H
 
+#include <qxgraphics_global.h>
 #include <QObject>
 #include <QGraphicsView>
 #include <QContextMenuEvent>
@@ -9,7 +10,7 @@
 #include <QKeyEvent>
 #include <QPainter>
 
-class QxGraphicsViewController : public QObject
+class QXGRAPHICS_EXPORT QxGraphicsViewController : public QObject
 {
   Q_OBJECT
 public:

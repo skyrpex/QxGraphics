@@ -1,13 +1,14 @@
 #ifndef QXGRAPHICSPOLYGONITEM_H
 #define QXGRAPHICSPOLYGONITEM_H
 
+#include <qxgraphics_global.h>
 #include <QGraphicsItemGroup>
 #include <QPolygonF>
 #include <QObject>
-#include "qxgraphicsvertexitem.h"
-#include "qxgraphicsedgeitem.h"
+#include <QxGraphicsVertexItem>
+#include <QxGraphicsEdgeItem>
 
-class QxGraphicsPolygonItem : public QObject, public QGraphicsItemGroup
+class QXGRAPHICS_EXPORT QxGraphicsPolygonItem : public QObject, public QGraphicsItemGroup
 {
   Q_OBJECT
   Q_INTERFACES(QGraphicsItem)

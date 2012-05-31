@@ -1,6 +1,7 @@
 #ifndef QXGRAPHICSVIEW_H
 #define QXGRAPHICSVIEW_H
 
+#include <qxgraphics_global.h>
 #include <QGraphicsView>
 #include <QxGraphicsViewController>
 
@@ -10,7 +11,7 @@
   *
   * It is able to do nice things
   */
-class QxGraphicsView : public QGraphicsView
+class QXGRAPHICS_EXPORT QxGraphicsView : public QGraphicsView
 {
   Q_OBJECT
 public:
