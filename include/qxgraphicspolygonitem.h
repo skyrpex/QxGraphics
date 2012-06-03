@@ -30,6 +30,8 @@ public:
 
 //  void updateBoundaryEdges();
 
+  QList<QxGraphicsVertexItem*> vertices() const;
+
 public slots:
   void setBoundaryVerticesVisible(bool visible);
 

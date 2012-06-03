@@ -139,6 +139,11 @@ void QxGraphicsPolygonItem::close()
   this->createEdge(m_boundary.last(), m_boundary.first());
 }
 
+QList<QxGraphicsVertexItem *> QxGraphicsPolygonItem::vertices() const
+{
+  return m_boundary;
+}
+
 
 //void QxGraphicsPolygonItem::updateBoundaryEdges()
 //{
