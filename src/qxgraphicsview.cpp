@@ -5,6 +5,7 @@
 #include <cmath>
 #include <math.h>
 #include <QMessageBox>
+#include <QxGraphicsViewController>
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,10 +46,18 @@ QxGraphicsView::QxGraphicsView(QGraphicsScene *scene, QWidget *parent) :
 void QxGraphicsView::installController(QxGraphicsViewController *controller)
 {
   if(m_controller)
-    m_controller->uninstallFrom(this);
+  {
+    m_controller->uninstall();
+    m_controller->m_view = NULL;
+  }
   m_controller = controller;
   if(m_controller)
-    m_controller->installTo(this);
+  {
+    if(m_controller->installTo(this))
+      m_controller->m_view = this;
+    else
+      qDebug() << "Error installing" << m_controller;
+  }
   this->viewport()->update();
 }
 
@@ -57,7 +66,10 @@ void QxGraphicsView::installController(QxGraphicsViewController *controller)
 void QxGraphicsView::uninstallController()
 {
   if(m_controller)
-    m_controller->uninstallFrom(this);
+  {
+    m_controller->uninstall();
+    m_controller->m_view = NULL;
+  }
   this->viewport()->update();
 }
 
@@ -147,14 +159,14 @@ void QxGraphicsView::setSceneBrush(const QBrush &brush)
 void QxGraphicsView::contextMenuEvent(QContextMenuEvent *event)
 {
   if(m_controller)
-    m_controller->contextMenuEvent(this, event);
+    m_controller->contextMenuEvent(event);
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::wheelEvent(QWheelEvent *event)
 {
-  if(m_controller && m_controller->wheelEvent(this, event))
+  if(m_controller && m_controller->wheelEvent(event))
     return;
 
   if(!m_zoomingEnabled)
@@ -170,7 +182,7 @@ void QxGraphicsView::wheelEvent(QWheelEvent *event)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 {
-  if(m_controller && m_controller->mouseDoubleClickEvent(this, event))
+  if(m_controller && m_controller->mouseDoubleClickEvent(event))
     return;
 
   QGraphicsView::mouseDoubleClickEvent(event);
@@ -180,7 +192,7 @@ void QxGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::mousePressEvent(QMouseEvent *event)
 {
-  if(m_controller && m_controller->mousePressEvent(this, event))
+  if(m_controller && m_controller->mousePressEvent(event))
     return;
 
   QGraphicsView::mousePressEvent(event);
@@ -193,7 +205,7 @@ void QxGraphicsView::mousePressEvent(QMouseEvent *event)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
-  if(m_controller && m_controller->mouseMoveEvent(this, event))
+  if(m_controller && m_controller->mouseMoveEvent(event))
     return;
   QGraphicsView::mouseMoveEvent(event);
 }
@@ -202,7 +214,7 @@ void QxGraphicsView::mouseMoveEvent(QMouseEvent *event)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
-  if(m_controller && m_controller->mouseReleaseEvent(this, event))
+  if(m_controller && m_controller->mouseReleaseEvent(event))
     return;
   QGraphicsView::mouseReleaseEvent(event);
 }
@@ -211,7 +223,7 @@ void QxGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::keyPressEvent(QKeyEvent *event)
 {
-  if(m_controller && m_controller->keyPressEvent(this, event))
+  if(m_controller && m_controller->keyPressEvent(event))
     return;
 
   if(m_handDragEnabled && event->key() == m_handDragKey)
@@ -232,7 +244,7 @@ void QxGraphicsView::keyPressEvent(QKeyEvent *event)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::keyReleaseEvent(QKeyEvent *event)
 {
-  if(m_controller && m_controller->keyReleaseEvent(this, event))
+  if(m_controller && m_controller->keyReleaseEvent(event))
     return;
 
   if(event->key() == m_handDragKey)
@@ -269,7 +281,7 @@ void QxGraphicsView::drawBackground(QPainter *painter, const QRectF &rect)
 
   // Draw the controller
   if(m_controller)
-    m_controller->drawBackground(this, painter, rect);
+    m_controller->drawBackground(painter, rect);
 }
 
 
@@ -278,7 +290,7 @@ void QxGraphicsView::drawForeground(QPainter *painter, const QRectF &rect)
 {
   QGraphicsView::drawForeground(painter, rect);
   if(m_controller)
-    m_controller->drawForeground(this, painter, rect);
+    m_controller->drawForeground(painter, rect);
 }
 
 

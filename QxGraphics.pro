@@ -9,7 +9,8 @@ SOURCES += \
     $$PWD/src/qxgraphicslineitem.cpp \
     $$PWD/src/qxgraphicsedgeitem.cpp \
     $$PWD/src/qxgraphicspolygonitem.cpp \
-    $$PWD/src/qxgraphicsvertexitem.cpp
+    $$PWD/src/qxgraphicsvertexitem.cpp \
+    src/qxgraphicsviewcontroller.cpp
 
 HEADERS  += \
     $$PWD/include/qxgraphics_global.h \
@@ -18,6 +19,7 @@ HEADERS  += \
     $$PWD/include/QxGraphicsPolygonItem \
     $$PWD/include/QxGraphicsVertexItem \
     $$PWD/include/QxGraphicsEdgeItem \
+    $$PWD/include/QxGraphicsViewController \
     $$PWD/include/qxgraphicsview.h \
     $$PWD/include/qxgraphicslineitem.h \
     $$PWD/include/qxgraphicspolygonitem.h \

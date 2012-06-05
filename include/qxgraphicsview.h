@@ -3,7 +3,8 @@
 
 #include <qxgraphics_global.h>
 #include <QGraphicsView>
-#include <QxGraphicsViewController>
+
+class QxGraphicsViewController;
 
 /**
   * @class GraphicsEnhancedView
@@ -29,16 +30,10 @@ public:
   explicit QxGraphicsView(QGraphicsScene *scene, QWidget *parent = 0);
 
   /**
-    * @brief Constructor that takes a QGraphicsScene
-    * @param scene  QGraphicsScene
-    * @param parent QWidget
     */
   void installController(QxGraphicsViewController *controller);
 
   /**
-    * @brief Constructor that takes a QGraphicsScene
-    * @param scene  QGraphicsScene
-    * @param parent QWidget
     */
   void uninstallController();
 
