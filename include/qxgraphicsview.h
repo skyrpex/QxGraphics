@@ -103,6 +103,10 @@ public slots:
     */
   void setSceneBrush(const QBrush &brush);
 
+  /**
+    */
+  QBrush sceneBrush() const;
+
 signals:
   /**
     * @brief This property holds the scale of the view

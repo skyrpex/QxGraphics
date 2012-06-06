@@ -154,6 +154,11 @@ void QxGraphicsView::setSceneBrush(const QBrush &brush)
   m_sceneBrush = brush;
 }
 
+QBrush QxGraphicsView::sceneBrush() const
+{
+  return m_sceneBrush;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::contextMenuEvent(QContextMenuEvent *event)
