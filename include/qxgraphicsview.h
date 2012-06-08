@@ -38,12 +38,6 @@ public:
   void uninstallController();
 
   /**
-    * @brief Sets the current scene rect to fit the items bounding box and applies a margin
-    * @param margin Margin to be applied to the items bouding box
-    */
-  void updateSceneRect(int margin = 0);
-
-  /**
     * @brief Fits the view into the current scene rect keeping the aspect ratio
     */
   void fitView();
@@ -106,6 +100,12 @@ public slots:
   /**
     */
   QBrush sceneBrush() const;
+
+  /**
+    * @brief Sets the current scene rect to fit the items bounding box and applies a margin
+    * @param margin Margin to be applied to the items bouding box
+    */
+  void updateSceneRect(int margin = 0);
 
 signals:
   /**
