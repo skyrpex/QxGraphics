@@ -1,2 +1,2 @@
-INCLUDEPATH += $$PWD/include
-LIBS += -L$$PWD/bin -lQxGraphics
+INCLUDEPATH *= $$PWD/include
+LIBS *= -L$$PWD/bin -lQxGraphics
