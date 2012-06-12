@@ -117,6 +117,9 @@ bool QxGraphicsView::zoomingEnabled() const
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void QxGraphicsView::setScale(qreal scale)
 {
+  if(m_scale == scale)
+    return;
+
   m_scale = scale;
 
   QMatrix matrix;
