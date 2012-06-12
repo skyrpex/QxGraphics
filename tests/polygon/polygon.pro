@@ -1,7 +1,7 @@
 QT = core gui
-TARGET = test
+TARGET = polygon
 TEMPLATE = app
 
 SOURCES += main.cpp
 
-include(../QxGraphics.pri)
+include(../../QxGraphics.pri)
